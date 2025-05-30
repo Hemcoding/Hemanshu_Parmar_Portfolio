@@ -2,6 +2,10 @@ import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-scroll";
 import { toast } from "react-toastify";
+import Hemanshu from "../assets/Hemanshu_Parmar_emoji.png";
+import NodeJS from "../assets/nodeJs_logo.png";
+import JS from "../assets/js_logo.png";
+import ReactJS from "../assets/react.svg";
 
 const Home = () => {
   const handleDownload = async () => {
@@ -43,7 +47,12 @@ const Home = () => {
             <h1 className="text-4xl font-extrabold dark:text-orange-500 tracking-wide">
               <span className=" text-orange-400">
                 <Typewriter
-                  words={["Hemanshu", "Web Developer", "UI/UX Designer", "Freelancer"]}
+                  words={[
+                    "Hemanshu",
+                    "Web Developer",
+                    "UI/UX Designer",
+                    "Freelancer",
+                  ]}
                   loop={true}
                   cursor
                   cursorStyle="|"
@@ -59,43 +68,41 @@ const Home = () => {
               great user experience from front to back.
             </p>
             <div className="flex space-x-5">
-
-            <Link to="contact" smooth={true} duration={500} offset={-80}>
-              <button className="bg-orange-400 cursor-pointer px-6 py-2 shadow-lg rounded-md text-white font-semibold hover:bg-orange-500 transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95">
-                Hire Me
+              <Link to="contact" smooth={true} duration={500} offset={-80}>
+                <button className="bg-orange-400 cursor-pointer px-6 py-2 shadow-lg rounded-md text-white font-semibold hover:bg-orange-500 transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95">
+                  Hire Me
+                </button>
+              </Link>
+              <button
+                onClick={handleDownload}
+                className="bg-orange-400 cursor-pointer px-6 py-2 shadow-lg rounded-md text-white font-semibold hover:bg-orange-500 transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-100"
+              >
+                Download CV
               </button>
-            </Link>
-            <button
-              onClick={handleDownload}
-              className="bg-orange-400 cursor-pointer px-6 py-2 shadow-lg rounded-md text-white font-semibold hover:bg-orange-500 transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-100"
-            >
-              Download CV
-            </button>
             </div>
           </div>
           <div className="flex relative justify-center mx-auto">
-            
             <img
               className="absolute transition -translate-x-35 translate-y-0 sm:-translate-x-60 sm:translate-y-10 w-15 sm:w-20 animate-bounce"
-              src="src\assets\react.svg"
+              src={ReactJS}
               alt="React"
               srcSet=""
             />
             <img
               className="absolute transition translate-x-35 translate-y-40 sm:translate-x-60 sm:translate-y-50 w-15 sm:w-20 animate-bounce"
-              src="src\assets\js_logo.png"
+              src={JS}
               alt="JavaScript"
               srcSet=""
             />
             <img
               className="absolute transition translate-x-30 -translate-y-10 sm:translate-x-50 sm:-translate-y-10 w-15 sm:w-20 animate-bounce"
-              src="src\assets\nodeJs_logo.png"
+              src={NodeJS}
               alt="NodeJS"
               srcSet=""
             />
             <img
               className="z-1 w-70 h-90 sm:w-120 sm:h-140 lg:w-100 lg:h-120"
-              src="src\assets\Hemanshu_Parmar_emoji.png"
+              src={Hemanshu}
               alt="Hemanshu Parmar"
               srcSet=""
             />

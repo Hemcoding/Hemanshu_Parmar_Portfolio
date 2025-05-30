@@ -12,6 +12,20 @@ import {
 import { PiCookingPotFill } from "react-icons/pi";
 import Certificates from "./Certificates";
 import { Link } from "react-scroll";
+import Passport_photograph from "../assets/Passport_Photograph.png"
+import HTML from "../assets/html.png"
+import CSS from "../assets/CSS.png"
+import JavaScript from "../assets/js_logo.png"
+import ReactJS from "../assets/react.svg"
+import Redux from "../assets/redux.png"
+import NodeJS from "../assets/nodeJs_logo.png"
+import MongoDB from "../assets/mongodb.png"
+import ExpressJS from "../assets/express-js.png"
+import TailwindCSS from "../assets/tailwind.png"
+import Python from "../assets/python.png"
+import Git from "../assets/git.png"
+import Figma from "../assets/figma.png"
+
 
 const About = () => {
   const hobbies = [
@@ -26,18 +40,18 @@ const About = () => {
   ];
 
   const techStack = [
-    { name: "HTML", logo: "src/assets/html.png" },
-    { name: "CSS", logo: "src/assets/CSS.png" },
-    { name: "JavaScript", logo: "src/assets/js_logo.png" },
-    { name: "ReactJS", logo: "src/assets/react.svg" },
-    { name: "Redux", logo: "src/assets/redux.png" },
-    { name: "NodeJS", logo: "src/assets/nodeJs_logo.png" },
-    { name: "MongoDB", logo: "src/assets/mongodb.png" },
-    { name: "ExpressJS", logo: "src/assets/express-js.png" },
-    { name: "Tailwind CSS", logo: "src/assets/tailwind.png" },
-    { name: "Python", logo: "src/assets/python.png" },
-    { name: "Git", logo: "src/assets/git.png" },
-    { name: "Figma", logo: "src/assets/figma.png" },
+    { name: "HTML", logo: HTML },
+    { name: "CSS", logo: CSS },
+    { name: "JavaScript", logo: JavaScript},
+    { name: "ReactJS", logo: ReactJS },
+    { name: "Redux", logo: Redux },
+    { name: "NodeJS", logo: NodeJS },
+    { name: "MongoDB", logo: MongoDB },
+    { name: "ExpressJS", logo: ExpressJS },
+    { name: "Tailwind CSS", logo: TailwindCSS },
+    { name: "Python", logo: Python },
+    { name: "Git", logo: Git },
+    { name: "Figma", logo: Figma },
   ];
 
   return (
@@ -52,7 +66,7 @@ const About = () => {
               <div className="flex items-end w-75 h-100 lg:w-90 lg:h-120 rounded-full shadow-2xl hover:shadow-2xs bg-orange-400 mt-3 ml-3">
                 <img
                   className="w-80 h-90 lg:w-90 lg:h-110 rounded-b-full"
-                  src="src/assets/Passport_Photograph.png"
+                  src={Passport_photograph}
                   alt="Hemanshu Parmar"
                   srcSet=""
                 />

@@ -6,6 +6,8 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
+import FSWD from "../assets/FSWD.jpg"
+import Digital from "../assets/DigitalMarketing.jpg"
 
 const certifications = [
   {
@@ -13,14 +15,14 @@ const certifications = [
     title: "Full Stack Web Development-2023",
     issuer: "Codingshuttle",
     date: "Jan 2023",
-    certificateUrl: "src/assets/FSWD.jpg",
+    certificateUrl: FSWD,
   },
   {
     id: 2,
     title: "Fundamentals of Digital Marketing",
     issuer: "Google",
     date: "July 2020",
-    certificateUrl: "src/assets/DigitalMarketing.jpg",
+    certificateUrl: Digital,
   },
 ];
 

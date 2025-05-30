@@ -1,4 +1,5 @@
 import React from "react";
+import AeonX from "../assets/AeonX.jpg"
 
 const experiences = [
   {
@@ -7,7 +8,7 @@ const experiences = [
     role: "Web Developer",
     description:"Worked as a Web Developer (Frontend Developer) at AeonX Digital Solution, Bhuj, for 5 months.Gained hands-on experience in building responsive web interfaces using HTML, CSS, JavaScript, and React.js.Collaborated with the development team to enhance UI/UX and optimize performance.Learned industry-standard practices, version control (Git), and real-time project workflows.",
     duration: "(Aug)2023 - (Dec)2023",
-    icon: `src/assets/AeonX.jpg`,
+    icon: AeonX,
   },
 ]
 

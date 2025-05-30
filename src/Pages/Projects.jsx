@@ -8,6 +8,9 @@ import {
   MonitorSmartphone,
 } from "lucide-react";
 import { Box, IconButton, Modal } from "@mui/material";
+import BarberQueue from "../assets/braberqueue.png"
+import Portfolio from "../assets/portfolio.png"
+import BarberQueueVideo from "../assets/BarberQueue_vdo.mp4"
 
 const style = {
   position: "absolute",
@@ -31,10 +34,10 @@ const ProjectsSection = () => {
         "A full-stack dashboard for managing barber shop appointments, staff, earnings, and services.",
       longDescription:
         "BarberQueue is a smart appointment management app designed for barbershops. It streamlines booking, tracks earnings, manages staff and services, and keeps customers updated with real-time notifications — all in one easy-to-use dashboard.",
-      image: "src/assets/braberqueue.png",
+      image: BarberQueue,
       technologies: ["React Native", "NodeJS", "MongoDB", "ExpressJS"],
       categories: ["Full Stack", "Frontend", "Backend"],
-      videoUrl: "src/assets/BarberQueue_vdo.mp4",
+      videoUrl: BarberQueueVideo,
       color: "from-orange-400 to-orange-500",
       icon: <TabletSmartphone className="w-6 h-6" />,
     },
@@ -45,7 +48,7 @@ const ProjectsSection = () => {
         "A modern developer portfolio showcasing creativity, code, and craftsmanship.",
       longDescription:
         "My portfolio website reflects my journey as a full-stack developer, combining clean UI with powerful functionality. Built with React, it features dark mode, project showcases, and a dynamic contact form to connect with potential collaborators and recruiters.",
-      image: "src/assets/portfolio.png",
+      image: Portfolio,
       technologies: ["ReactJS", "Tailwind", "EmailJS", "Shadcn-UI"],
       categories: ["Frontend"],
       liveUrl: "https://hemanshu-parmar-portfolio.netlify.app",

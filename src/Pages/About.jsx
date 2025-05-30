@@ -52,7 +52,7 @@ const About = () => {
               <div className="flex items-end w-75 h-100 lg:w-90 lg:h-120 rounded-full shadow-2xl hover:shadow-2xs bg-orange-400 mt-3 ml-3">
                 <img
                   className="w-80 h-90 lg:w-90 lg:h-110 rounded-b-full"
-                  src="src/assets/Passport_Photograp.png"
+                  src="src/assets/Passport_Photograph.png"
                   alt="Hemanshu Parmar"
                   srcSet=""
                 />

@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+.link-active {
+  @apply text-orange-400;
+}
+
+.dark .link-active {
+  @apply text-orange-400;
+}

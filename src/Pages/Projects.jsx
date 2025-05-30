@@ -48,7 +48,7 @@ const ProjectsSection = () => {
       image: "src/assets/portfolio.png",
       technologies: ["ReactJS", "Tailwind", "EmailJS", "Shadcn-UI"],
       categories: ["Frontend"],
-      liveUrl: "https://Hemanshu_Parmar_Portfolio.netlify.app",
+      liveUrl: "https://hemanshu-parmar-portfolio.netlify.app",
       githubUrl: "https://github.com/Hemcoding/Hemanshu_Parmar_Portfolio",
       color: "from-orange-400 to-orange-500",
       icon: <MonitorSmartphone className="w-6 h-6" />,

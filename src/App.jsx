@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -12,8 +12,26 @@ import Frelance from "./Pages/Frelance";
 import Footer from "./Components/Footer";
 import Toggle from "./Components/Toggle";
 import Projects from "./Pages/Projects";
+import { ArrowUpCircle } from "lucide-react";
 
 const App = () => {
+
+   const [showScrollUp, setShowScrollUp] = useState(false);
+
+   useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollUp(window.scrollY > 200); // show after 200px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+
   return (
     <>
       <Toggle />
@@ -38,6 +56,15 @@ const App = () => {
         <Contact />
       </Element>
       <Footer />
+
+      {showScrollUp && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-white dark:bg-gray-800 dark:hover:bg-gray-600 text-white rounded-full shadow-lg hover:bg-gray-100 transition"
+        >
+          <ArrowUpCircle size={40} color="#ff8904" />
+        </button>
+      )}
     </>
   );
 };

@@ -33,7 +33,7 @@ const Services = () => {
         <div className="flex flex-col items-center space-y-10 lg:space-y-20 max-w-3/4">
           <div className="flex flex-col items-center lg:space-y-10">
             <p className="text-3xl font-bold  text-gray-900 dark:text-white mb-2">
-              What do i offer?
+              What do I offer?
             </p>
             <p className="text-center text-gray-500 dark:text-gray-400 sm:w-3/4 lg:w-3/5">
               From UI design to app launch — complete digital solutions in one place.

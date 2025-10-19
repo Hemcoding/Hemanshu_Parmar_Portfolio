@@ -6,8 +6,9 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import FSWD from "../assets/FSWD.jpg"
-import Digital from "../assets/DigitalMarketing.jpg"
+import FSWD from "../assets/FSWD.jpg";
+import Digital from "../assets/DigitalMarketing.jpg";
+import { motion } from "motion/react";
 
 const certifications = [
   {
@@ -43,18 +44,52 @@ const Certificates = () => {
   return (
     <section id="certifications" className="pt-20 bg-white dark:bg-gray-700">
       <div className="w-3/4 mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
+        {/* Header */}
+        <motion.h2
+          className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Certificates
-        </h2>
-        <p className="text-center m-auto text-gray-500 dark:text-gray-400 sm:w-3/4 lg:w-3/5 mb-10">
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p
+          className="text-center m-auto text-gray-500 dark:text-gray-400 sm:w-3/4 lg:w-3/5 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           🏅 These certifications reflect my continuous learning and commitment
           to mastering modern web development technologies.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        </motion.p>
+
+        {/* Certificates Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+        >
           {certifications.map((cert) => (
-            <div
+            <motion.div
               key={cert.id}
-              className="bg-orange-100 dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-gray-500 group-hover:transform group-hover:duration-300 group-hover:scale-[1.02] hover:ease-in-out"
+              className="bg-orange-100 dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg group cursor-pointer"
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: { type: "spring", stiffness: 100, damping: 12 },
+                },
+              }}
+              whileHover={{ scale: 1.03 }}
             >
               <h3 className="text-xl font-semibold text-orange-400 mb-2">
                 {cert.title}
@@ -71,12 +106,15 @@ const Certificates = () => {
               >
                 View Certificate
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
+        {/* Dialog for certificate */}
         <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-          <DialogTitle className="text-orange-400">{selectedCert?.title}</DialogTitle>
+          <DialogTitle className="text-orange-400">
+            {selectedCert?.title}
+          </DialogTitle>
           <DialogContent className="overflow-auto scrollbar-none">
             {selectedCert && (
               <img
@@ -95,7 +133,7 @@ const Certificates = () => {
               download
               component="a"
               variant="contained"
-              color="warning"           
+              color="warning"
             >
               Download
             </Button>
@@ -107,4 +145,3 @@ const Certificates = () => {
 };
 
 export default Certificates;
-

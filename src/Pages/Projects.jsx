@@ -8,9 +8,11 @@ import {
   MonitorSmartphone,
 } from "lucide-react";
 import { Box, IconButton, Modal } from "@mui/material";
-import BarberQueue from "../assets/braberqueue.png"
-import Portfolio from "../assets/portfolio.png"
-import BarberQueueVideo from "../assets/BarberQueue_vdo.mp4"
+import BarberQueue from "../assets/braberqueue.png";
+import Portfolio from "../assets/portfolio.png";
+import Prepify from "../assets/prepify.png"
+import BarberQueueVideo from "../assets/BarberQueue_vdo.mp4";
+import { motion } from "motion/react";
 
 const style = {
   position: "absolute",
@@ -56,6 +58,20 @@ const ProjectsSection = () => {
       color: "from-orange-400 to-orange-500",
       icon: <MonitorSmartphone className="w-6 h-6" />,
     },
+    {
+      id: 3,
+      title: "Prepify AI",
+      description:
+        "Prepify is an AI-powered platform that helps users practice for tech interviews by generating personalized question sessions.",
+      longDescription:
+        "Prepify is an AI-based web app for technical interview preparation. Users can create personalized sessions and generate custom interview questions across different tech domains. It focuses on providing smart, adaptive, and efficient practice for aspiring developers.",
+      image: Prepify,
+      technologies: ["ReactJS", "Tailwind","NodeJS", "EmailJS", "MongoDB", "ExpressJS"],
+      categories: ["Full Stack", "Frontend", "Backend"],
+      githubUrl: "https://github.com/Hemcoding/Prepify",
+      color: "from-orange-400 to-orange-500",
+      icon: <MonitorSmartphone className="w-6 h-6" />,
+    },
   ];
 
   const categories = ["All", "Full Stack", "Frontend", "Backend", "Design"];
@@ -81,9 +97,20 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="w-full bg-white dark:bg-gray-700 pb-20 ">
+    <motion.section
+      className="w-full bg-white dark:bg-gray-700 pb-20"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="container mx-auto w-3/4">
-        <div className="text-center mb-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 pt-10 leading-tight">
             Creative Work
           </h2>
@@ -91,68 +118,84 @@ const ProjectsSection = () => {
             Crafting digital experiences through innovative solutions and
             thoughtful design.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        {/* Category Buttons */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category}
               onClick={() => setSelectedCategory(category)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className={`relative px-6 py-3 rounded-full font-medium transition-all duration-300 overflow-hidden group ${
                 selectedCategory === category
                   ? "text-white"
-                  : "text-gray-700 dark:text-white hover:text-orange-400 dark:hover:text-orange-400 "
+                  : "text-gray-700 dark:text-white hover:text-orange-400 dark:hover:text-orange-400"
               }`}
             >
               <div
                 className={`absolute inset-0 rounded-full transition-all duration-300 ${
                   selectedCategory === category
                     ? "bg-orange-400 opacity-100"
-                    : "border-1 border-orange-400 opacity-0 group-hover:opacity-20 group-hover:bg-orange-400"
+                    : "border border-orange-400 opacity-0 group-hover:opacity-20 group-hover:bg-orange-400"
                 }`}
               />
-              <span className="relative z-10 flex items-center gap-2">
-                {category}
-                {category !== "All" && (
-                  <span className="text-xs text-orange-400 dark:text-orange-400 dark:bg-white bg-gray-100 px-2 py-1 rounded-full">
-                    {
-                      projects.filter((p) => p.categories.includes(category))
-                        .length
-                    }
-                  </span>
-                )}
-              </span>
-            </button>
+              <span className="relative z-10">{category}</span>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        {filteredProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {filteredProjects.map((project, index) => (
-              <div
+        {/* Projects Grid */}
+        {projects.length > 0 ? (
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+            initial="hidden"
+            whileInView="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.15 },
+              },
+            }}
+          >
+            {projects.map((project) => (
+              <motion.div
                 key={project.id}
-                className="group relative"
+                variants={{
+                  hidden: { opacity: 0, y: 100, scale: 0.9 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+                  },
+                }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.98 }}
                 onMouseEnter={() => setHoveredCard(project.id)}
                 onMouseLeave={() => setHoveredCard(null)}
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group relative bg-white dark:bg-gray-800 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-gray-100 dark:hover:shadow-orange-400/20 border border-gray-200 dark:border-gray-700 group-hover:border-orange-400/30"
               >
-                <div className="relative bg-white dark:bg-gray-800 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-gray-100 dark:hover:shadow-orange-400/20 group-hover:transform group-hover:scale-[1.02] border border-gray-200 dark:border-gray-700 group-hover:border-orange-400/30">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-
-                    <div className="absolute top-4 left-4">
-                      <div
-                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
-                      >
-                        {project.icon}
-                      </div>
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <div
+                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                    >
+                      {project.icon}
                     </div>
-
-                    <div className="absolute top-4 right-4">
+                  </div>
+                  <div className="absolute top-4 right-4">
                       {project.liveUrl ? (
                         <div className="flex items-center gap-1 bg-green-500/20 backdrop-blur-sm border border-green-400/30 text-green-500 px-3 py-1 rounded-full text-xs font-medium">
                           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -169,9 +212,10 @@ const ProjectsSection = () => {
                           Private
                         </div>
                       )}
-                    </div>
                   </div>
+                </div>
 
+                {/* </div> */}
                   <div className="p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {project.categories.map((category, idx) => (
@@ -183,88 +227,93 @@ const ProjectsSection = () => {
                         </span>
                       ))}
                     </div>
-
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-600 group-hover:bg-clip-text transition-all duration-300">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                      {hoveredCard === project.id
-                        ? project.longDescription
-                        : project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1 mb-6">
-                      {project.technologies.slice(0, 3).map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-700/30 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <span className="text-xs px-2 py-1 text-gray-500 dark:text-gray-500">
-                          +{project.technologies.length - 3}
-                        </span>
-                      )}
                     </div>
 
-                    <div className="flex gap-3">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`flex-1 flex items-center justify-center gap-2 bg-gradient-to-r ${project.color} text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95`}
-                        >
-                          <Eye className="w-4 h-4" />
-                          Demo
-                        </a>
-                      )}
-                      {project.videoUrl && (
-                        <a
-                          rel="noopener noreferrer"
-                          className={`flex-1 flex items-center justify-center gap-2 bg-gradient-to-r ${project.color} text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95 cursor-pointer`}
-                          onClick={() => handleVideo(project.videoUrl)}
-                        >
-                          <Play className="w-4 h-4" />
-                          Watch Video
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 bg-transparent hover:bg-orange-400 text-orange-400 hover:text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 border border-orange-400 hover:border-orange-400 hover:shadow-lg hover:shadow-orange-400/30"
-                        >
-                          <Github className="w-4 h-4" />
-                          Code
-                        </a>
-                      )}
-                    </div>
+                <div className="px-6">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-600 group-hover:bg-clip-text transition-all duration-300">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                    {hoveredCard === project.id
+                      ? project.longDescription
+                      : project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.slice(0, 3).map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-700/30 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="text-xs px-2 py-1 text-gray-500 dark:text-gray-500">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex gap-3 mb-6">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex-1 flex items-center justify-center gap-2 bg-gradient-to-r ${project.color} text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95`}
+                      >
+                        <Eye className="w-4 h-4" />
+                        Demo
+                      </a>
+                    )}
+                    {project.videoUrl && (
+                      <button
+                        onClick={() => handleVideo(project.videoUrl)}
+                        className={`flex-1 flex items-center justify-center gap-2 bg-gradient-to-r ${project.color} text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105 active:scale-95`}
+                      >
+                        <Play className="w-4 h-4" />
+                        Watch
+                      </button>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-transparent hover:bg-orange-400 text-orange-400 hover:text-white py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 border border-orange-400 hover:border-orange-400 hover:shadow-lg hover:shadow-orange-400/30"
+                      >
+                        <Github className="w-4 h-4" />
+                        Code
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
-          <div className="text-center text-gray-500 dark:text-gray-300 py-12">
+          <motion.div
+            className="text-center text-gray-500 dark:text-gray-300 py-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
             <h3 className="text-xl font-semibold mb-2">No projects found</h3>
             <p>Try selecting a different category.</p>
-          </div>
+          </motion.div>
         )}
 
+        {/* Video Modal */}
         <Modal open={showVideo} onClose={() => setShowVideo(false)}>
           <Box sx={style}>
             <div className="flex w-full justify-end">
-              <IconButton onClick={() => setShowVideo(false)} sx={{}}>
+              <IconButton onClick={() => setShowVideo(false)}>
                 <X />
               </IconButton>
             </div>
-
-            <Box sx={{ position: "relative", pt: "56.25%" /* 16:9 ratio */ }}>
+            <Box sx={{ position: "relative", pt: "56.25%" }}>
               <iframe
                 src={videoLink}
                 title="Project Video"
@@ -284,7 +333,7 @@ const ProjectsSection = () => {
           </Box>
         </Modal>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

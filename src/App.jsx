@@ -13,50 +13,68 @@ import Footer from "./Components/Footer";
 import Toggle from "./Components/Toggle";
 import Projects from "./Pages/Projects";
 import { ArrowUpCircle } from "lucide-react";
+import { motion, useScroll } from "framer-motion"; // ✅ use 'framer-motion'
 
 const App = () => {
+  const [showScrollUp, setShowScrollUp] = useState(false);
+  const { scrollYProgress } = useScroll();
 
-   const [showScrollUp, setShowScrollUp] = useState(false);
-
-   useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      setShowScrollUp(window.scrollY > 200); // show after 200px scroll
+      setShowScrollUp(window.scrollY > 200);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
 
   return (
     <>
-      <Toggle />
-      <Header />
-      <Element name="Home">
-        <Home />
-      </Element>
-      <Element name="About Me">
-        <About />
-      </Element>
-      <Frelance />
-      <Element name="Experience">
-        <Experience />
-      </Element>
-      <Element name="Services">
-        <Services />
-      </Element>
-      <Element name="Projects">
-        <Projects />
-      </Element>
-      <Element name="Contact Me">
-        <Contact />
-      </Element>
-      <Footer />
+      {/* 🔹 Scroll Progress Bar */}
+      <motion.div
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 5,
+          originX: 0,
+          backgroundColor: "#FF8904",
+          zIndex: 1000,
+        }}
+      />
 
+      {/* 🔹 Main Page Content */}
+      <div className="overflow-x-hidden">
+        <Toggle />
+        <Header />
+        <Element name="Home">
+          <Home />
+        </Element>
+        <Element name="About Me">
+          <About />
+        </Element>
+        <Frelance />
+        <Element name="Experience">
+          <Experience />
+        </Element>
+        <Element name="Services">
+          <Services />
+        </Element>
+        <Element name="Projects">
+          <Projects />
+        </Element>
+        <Element name="Contact Me">
+          <Contact />
+        </Element>
+        <Footer />
+      </div>
+
+      {/* 🔹 Scroll to Top Button */}
       {showScrollUp && (
         <button
           onClick={scrollToTop}

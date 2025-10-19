@@ -7,6 +7,18 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar but keep scrolling */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Optional */
+}
+
+/* For Internet Explorer / Edge */
+body {
+  -ms-overflow-style: none;
 }
 
 #section {

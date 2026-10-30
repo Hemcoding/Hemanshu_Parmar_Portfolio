@@ -25,6 +25,8 @@ import TailwindCSS from "../assets/tailwind.png";
 import Python from "../assets/python.png";
 import Git from "../assets/git.png";
 import Figma from "../assets/figma.png";
+import Laravel from "../assets/laravel.png";
+import PHP from "../assets/php.png";
 import { motion } from "motion/react";
 
 const About = () => {
@@ -52,6 +54,8 @@ const About = () => {
     { name: "Python", logo: Python },
     { name: "Git", logo: Git },
     { name: "Figma", logo: Figma },
+    { name: "Laravel", logo: Laravel },
+    { name: "PHP", logo: PHP },
   ];
 
   const container = {

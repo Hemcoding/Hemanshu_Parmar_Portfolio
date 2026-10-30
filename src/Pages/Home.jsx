@@ -3,9 +3,6 @@ import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-scroll";
 import { toast } from "react-toastify";
 import Hemanshu from "../assets/Hemanshu_Parmar_emoji.png";
-import NodeJS from "../assets/nodeJs_logo.png";
-import JS from "../assets/js_logo.png";
-import ReactJS from "../assets/react.svg";
 
 const Home = () => {
   const handleDownload = async () => {
@@ -39,10 +36,10 @@ const Home = () => {
     <>
       <section
         id="home"
-        className="flex justify-center flex-row w-full bg-linear-to-t top-0 from-orange-400 to-white dark:to-gray-700 pt-30 sm:pt-40"
+        className="relative flex justify-center flex-row w-full overflow-hidden bg-linear-to-t top-0 from-orange-400 to-white dark:to-gray-700 pt-30 sm:pt-40"
       >
-        <div className="flex justify-between items-center flex-wrap lg:flex-nowrap flex-row w-3/4">
-          <div className="flex flex-col space-y-3 lg:w-1/2 pb-20 ">
+        <div className="relative z-10 flex justify-between items-center flex-wrap lg:flex-nowrap flex-row w-3/4">
+          <div className="flex flex-col space-y-3 lg:w-1/2 pb-20">
             <p className="text-3xl font-bold">Hey I'm</p>
             <h1 className="text-4xl font-extrabold dark:text-orange-500 tracking-wide">
               <span className=" text-orange-400">
@@ -81,32 +78,13 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="flex relative justify-center mx-auto">
+          <div className="relative z-10 flex justify-center mx-auto">
             <img
-              className="absolute transition -translate-x-35 translate-y-0 sm:-translate-x-60 sm:translate-y-10 w-15 sm:w-20 animate-bounce"
-              src={ReactJS}
-              alt="React"
-              srcSet=""
-            />
-            <img
-              className="absolute transition translate-x-35 translate-y-40 sm:translate-x-60 sm:translate-y-50 w-15 sm:w-20 animate-bounce"
-              src={JS}
-              alt="JavaScript"
-              srcSet=""
-            />
-            <img
-              className="absolute transition translate-x-30 -translate-y-10 sm:translate-x-50 sm:-translate-y-10 w-15 sm:w-20 animate-bounce"
-              src={NodeJS}
-              alt="NodeJS"
-              srcSet=""
-            />
-            <img
-              className="z-1 w-70 h-90 sm:w-120 sm:h-140 lg:w-100 lg:h-120"
+              className="relative z-10 w-70 h-90 sm:w-120 sm:h-140 lg:w-100 lg:h-120"
               src={Hemanshu}
               alt="Hemanshu Parmar"
-              srcSet=""
             />
-            <div className="absolute flex items-end justify-center w-80 h-45 md:w-130 md:h-70 sm:w-150 sm:h-80 bottom-0 rounded-t-full bg-orange-400"></div>
+            <div className="absolute z-1 flex items-end justify-center w-80 h-45 md:w-130 md:h-70 sm:w-150 sm:h-80 bottom-0 rounded-t-full bg-orange-400"></div>
           </div>
         </div>
       </section>

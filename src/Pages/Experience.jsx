@@ -1,18 +1,71 @@
 import React from "react";
 import AeonX from "../assets/AeonX.jpg";
+import HBR from "../assets/HBR.png";
+import Jetaa from "../assets/Jetaa.png";
+import WRTeam from "../assets/WRTeam.png";
 import { motion } from "motion/react";
 
 const experiences = [
   {
     id: 1,
-    company: "AeonX Digital Solution",
-    role: "Web Developer",
+    company: "WRTeam",
+    role: "Backend Developer (Laravel)",
     description:
-      "Developed and maintained full-stack web applications using MongoDB, Express.js, React.js, and Node.js (MERN).Built responsive and dynamic user interfaces with React.js, Tailwind CSS, and JavaScript.Designed and implemented RESTful APIs using Node.js and Express.js for seamless data flow between frontend and backend.Integrated MongoDB for database management and optimized queries for better performance.Collaborated with cross-functional teams to enhance UI/UX, improve application scalability, and ensure clean, maintainable code.Utilized Git/GitHub for version control and followed agile workflows for efficient project delivery.",
-    duration: "(Aug)2023 - (Jul)2024",
-    icon: AeonX,
+      "Worked on in-house products, including eClassify and eBroker, contributing to backend development and product customizations. Integrated payment gateways to support payment-related functionality in web applications. Developed add-ons and plugins to extend existing product functionality. Implemented customizations to address product requirements and enhance application capabilities.",
+    duration: "Nov 2025 - Present",
+    icon: WRTeam,
+    iconAlt: "WRTeam logo",
+    initials: "WR",
   },
+  {
+    id: 2,
+    company: "Jetaa Technology",
+    role: "MERN Stack Developer (WFH)",
+    description:
+      "Developed and maintained responsive web applications using React.js, Node.js, Express.js, and MongoDB. Worked on scalable application features and backend APIs in a remote work environment.",
+    duration: "Jun 2025 - Nov 2025",
+    icon: Jetaa,
+    iconAlt: "Jetaa Technology logo",
+    initials: "JT",
+  },
+  {
+    id: 3,
+    company: "HBR Technology",
+    role: "MERN Stack Developer",
+    description:
+      "Designed and developed the official HBR Technology website with a focus on performance, responsiveness, and user experience. Developed features for a fertilizer shop management system, including product listing, inventory handling, and order management. Integrated RESTful APIs for data exchange between frontend and backend components and collaborated with the team to deliver user-friendly web applications.",
+    duration: "Jan 2024 - Jun 2024",
+    icon: HBR,
+    iconAlt: "HBR Technology logo",
+    initials: "HBR",
+  },
+  {
+    id: 4,
+    company: "AeonX Digital Solution",
+    role: "ReactJS Developer",
+    description:
+      "Developed and maintained responsive web interfaces using React.js, JavaScript (ES6+), and Tailwind CSS. Integrated RESTful APIs to support dynamic data rendering and user interactions. Collaborated with backend developers and designers to build scalable, user-friendly applications. Optimized component rendering and UI performance to improve the user experience. Used Git for version control and participated in code reviews and deployment workflows.",
+    duration: "Aug 2023 - Dec 2023",
+    icon: AeonX,
+    iconAlt: "AeonX Digital Solution logo",
+  }
 ];
+
+const CompanyIcon = ({ experience }) =>
+  experience.icon ? (
+    <img
+      className="w-10 h-10 rounded-full"
+      src={experience.icon}
+      alt={experience.iconAlt}
+    />
+  ) : (
+    <div
+      className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center text-xs font-bold"
+      aria-label={`${experience.company} initials`}
+    >
+      {experience.initials}
+    </div>
+  );
 
 const Experience = () => {
   return (
@@ -152,7 +205,7 @@ const Experience = () => {
             if (isEven) {
               return (
                 <motion.div
-                  key={index}
+                  key={exp.id}
                   {...motionProps}
                   className="flex relative"
                 >
@@ -176,11 +229,7 @@ const Experience = () => {
                           <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                         </div>
                       </div>
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={exp.icon}
-                        alt="Company"
-                      />
+                      <CompanyIcon experience={exp} />
                       <p className="text-xl font-medium"> {exp.company} </p>
                       <p className="text-gray-500 dark:text-gray-400">
                         {exp.duration}
@@ -192,7 +241,7 @@ const Experience = () => {
             } else {
               return (
                 <motion.div
-                  key={index}
+                  key={exp.id}
                   {...motionProps}
                   className="flex relative"
                 >
@@ -205,11 +254,7 @@ const Experience = () => {
                   </div>
                   <div className="flex flex-wrap lg:flex-nowrap w-full sm:space-y-2 lg:space-y-5">
                     <div className="flex flex-col w-full lg:w-1/2 lg:items-end space-y-1 lg:pb-15 px-10">
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={exp.icon}
-                        alt="icon"
-                      />
+                      <CompanyIcon experience={exp} />
                       <p className="text-xl font-medium"> {exp.company} </p>
                       <p className="text-gray-500 dark:text-gray-400">
                         {exp.duration}
